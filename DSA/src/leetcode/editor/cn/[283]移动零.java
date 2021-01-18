@@ -16,7 +16,7 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class Solution283 {
     public void moveZeroes(int[] nums) {
         //错误思路:[两个思路, 1. 边遍历边移动,缺点:越靠后的元素移动次数越多
         // 2.全部遍历,用一个临时数组记录0的索引,最后一次性移动,所有非0元素都只会移动依次]

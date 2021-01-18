@@ -29,7 +29,7 @@ import leetcode.ListNode;
  *     ListNode(int x) { val = x; }
  * }
  */
-class Solution {
+class Solution234 {
     //双指针确定链表中点,然后遍历判断
     public boolean isPalindrome(ListNode head) {
         ListNode p = head;

@@ -1,0 +1,8 @@
+server:
+  tomcat: #Tomcat常用配置
+    accept-count: 100 #accept队列长度
+    threads:
+      max: 100 #最大工作线程数
+      min-spare: 100 #最小工作线程数
+    connection-timeout: 5000
+#    max-connections: 2

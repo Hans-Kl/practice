@@ -55,22 +55,71 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
+import leetcode.Correct;
 import leetcode.ListNode;
+import leetcode.Wrong;
 
 /**
  * Definition for singly-linked list.
  * class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
+ * int val;
+ * ListNode next;
+ * ListNode(int x) {
+ * val = x;
+ * next = null;
+ * }
  * }
  */
-public class Solution {
-    public boolean hasCycle(ListNode head) {
-        
+class Solution2 {
+
+    // KLH: 快慢双指针
+    public static boolean hasCycle0(ListNode head) {
+        if (head == null || head.next == null || head.next.next == null) return false;
+        ListNode fast = head;
+        ListNode slow = head;
+        while (slow != null && fast != null) {
+            if (fast == slow) return true;
+            slow = slow.next;
+            if (slow == null) return false;
+            fast = fast.next.next;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        ListNode head = new ListNode(-21);
+        ListNode two = new ListNode(10);
+        head.next = two;
+        System.out.println(hasCycle(head));
+    }
+
+    @Correct
+    public static boolean hasCycle1(ListNode head) {
+        if (head == null || head.next == null) return false;
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (slow != fast) {
+            if (fast == null || fast.next == null) return false;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return true;
+    }
+
+    // KLH: 快慢双指针
+    @Wrong
+    public boolean wrong(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        while (slow.next != null) {
+            slow = slow.next;
+        }
+
+        while (fast.next.next != null) {
+
+            fast = fast.next.next;
+        }
+        return false;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
