@@ -1,5 +1,7 @@
 package threadlocal;
 
+import org.junit.Test;
+
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 import java.util.concurrent.ExecutionException;
@@ -22,8 +24,8 @@ public class TestThreadLocal {
 //        case3();
 //        case4();
 //        caseStudents();
-//        case6();
-        case7();
+        case6();
+//        case7();
     }
 
     private static void case1() {
@@ -92,6 +94,7 @@ public class TestThreadLocal {
 
     /**
      * 测试threadLocal只有弱引用的时候被gc
+     *
      * @throws InterruptedException
      */
     public static void case6() throws InterruptedException {
@@ -108,6 +111,7 @@ public class TestThreadLocal {
 
     /**
      * 测试threadLocal.remove()方法的效果,结果:entry被删除,包括key和value
+     *
      * @throws InterruptedException
      */
     public static void case7() throws InterruptedException {
@@ -119,6 +123,26 @@ public class TestThreadLocal {
         Thread.sleep(5000);
         Thread thread = Thread.currentThread();
         System.out.println("over");
+    }
+
+
+    @Test
+    public void test12() {
+        t1();
+        t2();
+    }
+
+    private void t1() {
+        ThreadLocal<Integer> local = ThreadLocal.withInitial(() -> 520);
+        System.out.println(local.get());
+    }
+
+    private void t2() {
+        System.gc();//提示JVM进行GC
+
+        Thread thread = Thread.currentThread();
+
+        System.out.println(thread);
     }
 
 }

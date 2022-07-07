@@ -15,12 +15,13 @@ public class InnerStaticSingleton {
     }
 
     private static class InnerClass {
-        private static InnerStaticSingleton innerInstance = new InnerStaticSingleton();
+        private static InnerStaticSingleton innerInstance = new InnerStaticSingleton("s");
     }
 
     public InnerStaticSingleton getInstance(String arg){
         if (instance == null) {
             instance=InnerClass.innerInstance;
         }
+        return null;
     }
 }

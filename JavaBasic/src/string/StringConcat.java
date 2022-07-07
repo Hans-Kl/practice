@@ -10,9 +10,10 @@ package string;
 public class StringConcat {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
+        testEquals();
 //        testStringPlus("klh", "abcd", 100000);//1000:20  100000:18319 原因:大量sb对象
 //        testStringConcat("klh", "abcd", 100000);//1000:5 100000:5693 原因:大量String对象
-        testStringBuilder("klh", "abcd", 100000);//1000:1 100000:57 原因:一个sb对象和一个String对象
+//        testStringBuilder("klh", "abcd", 100000);//1000:1 100000:57 原因:一个sb对象和一个String对象
         System.out.println(System.currentTimeMillis() - start);
     }
 
@@ -37,5 +38,16 @@ public class StringConcat {
             stringBuilder.append(apd);
         }
         System.out.println(stringBuilder.toString());
+    }
+
+    private static void testEquals() {
+        String s = "zzz";
+        String w = "zzz";
+        System.out.println(s==w);//true
+        String ss1 = new String(s);
+        System.out.println(ss1==w);//false
+        String ss2 = new String(s);
+        System.out.println(ss1==ss2);//false
+
     }
 }

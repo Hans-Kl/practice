@@ -33,4 +33,6 @@ public class TestLinkedList {
         System.out.println(deque.pop());
         System.out.println(deque.pop());
     }
+    
+
 }
